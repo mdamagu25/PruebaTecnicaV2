@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VentasModel1StoreContainer" CdmEntityContainer="VentasServerLogicalData">
+    <EntitySetMapping Name="Articulos">
+      <EntityTypeMapping TypeName="VentasModel1.Articulo">
+        <MappingFragment StoreEntitySet="Articulos">
+          <ScalarProperty Name="Codigo_Articulo" ColumnName="Codigo_Articulo" />
+          <ScalarProperty Name="Nombre_Articulo" ColumnName="Nombre_Articulo" />
+          <ScalarProperty Name="Precio_Articulo" ColumnName="Precio_Articulo" />
+          <ScalarProperty Name="IVA" ColumnName="IVA" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="VentasModel1.Cliente">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Nombre_Cliente" ColumnName="Nombre_Cliente" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Detalles">
+      <EntityTypeMapping TypeName="VentasModel1.Detalle">
+        <MappingFragment StoreEntitySet="Detalle">
+          <ScalarProperty Name="Id_Detalle" ColumnName="Id_Detalle" />
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+          <ScalarProperty Name="Codigo_Articulo" ColumnName="Codigo_Articulo" />
+          <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturas">
+      <EntityTypeMapping TypeName="VentasModel1.Factura">
+        <MappingFragment StoreEntitySet="Factura">
+          <ScalarProperty Name="Id_Factura" ColumnName="Id_Factura" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

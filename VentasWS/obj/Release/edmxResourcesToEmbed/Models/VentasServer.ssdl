@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="VentasModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Articulos">
+    <Key>
+      <PropertyRef Name="Codigo_Articulo" />
+    </Key>
+    <Property Name="Codigo_Articulo" Type="int" Nullable="false" />
+    <Property Name="Nombre_Articulo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Precio_Articulo" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="IVA" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="Id_Cliente" />
+    </Key>
+    <Property Name="Id_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre_Cliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contrasena" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle">
+    <Key>
+      <PropertyRef Name="Id_Detalle" />
+    </Key>
+    <Property Name="Id_Detalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Factura" Type="int" Nullable="false" />
+    <Property Name="Codigo_Articulo" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Total" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Factura">
+    <Key>
+      <PropertyRef Name="Id_Factura" />
+    </Key>
+    <Property Name="Id_Factura" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Cliente" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Detalle_Articulo">
+    <End Role="Articulos" Type="Self.Articulos" Multiplicity="1" />
+    <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulos">
+        <PropertyRef Name="Codigo_Articulo" />
+      </Principal>
+      <Dependent Role="Detalle">
+        <PropertyRef Name="Codigo_Articulo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detalle_Factura">
+    <End Role="Factura" Type="Self.Factura" Multiplicity="1" />
+    <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Factura">
+        <PropertyRef Name="Id_Factura" />
+      </Principal>
+      <Dependent Role="Detalle">
+        <PropertyRef Name="Id_Factura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Factura_Cliente">
+    <End Role="Clientes" Type="Self.Clientes" Multiplicity="1" />
+    <End Role="Factura" Type="Self.Factura" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="Id_Cliente" />
+      </Principal>
+      <Dependent Role="Factura">
+        <PropertyRef Name="Id_Cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="VentasModel1StoreContainer">
+    <EntitySet Name="Articulos" EntityType="Self.Articulos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle" EntityType="Self.Detalle" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Factura" EntityType="Self.Factura" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Detalle_Articulo" Association="Self.FK_Detalle_Articulo">
+      <End Role="Articulos" EntitySet="Articulos" />
+      <End Role="Detalle" EntitySet="Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detalle_Factura" Association="Self.FK_Detalle_Factura">
+      <End Role="Factura" EntitySet="Factura" />
+      <End Role="Detalle" EntitySet="Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Factura_Cliente" Association="Self.FK_Factura_Cliente">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Factura" EntitySet="Factura" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

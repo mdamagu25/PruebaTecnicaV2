@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Articulos Venta";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Venta de Articulos</title>
+</head>
+
+<body>
+    <h3 class="text-center text-white pt-5">Login form</h3>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center text-info">Ventas</h3>
+            </div>
+            <div class="card-body">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-6">
+                        <div class="col-md-12">
+                            <div>
+                                <label class="text-info">Codigo</label><br>
+                                <input class="form-control form-control-sm" type="text" id="txtCodigo" name="Codigo">
+                            </div>
+                            <div>
+                                <label class="text-info">Articulo</label><br>
+                                <input type="text" id="txtArticulo" name="Articulo" class="form-control">
+                            </div>
+                            <div>
+                                <label class="text-info">Precio</label><br>
+                                <input type="text" id="txtPrecio" name="Precio" class="form-control">
+                            </div>
+                            <div>
+                                <input class="form-check-input" type="checkbox" id="checkIVA">
+                                <label class="text-info" for="checkIVA">
+                                    Aplica IVA (13%)
+                                </label>
+                            </div>
+                            <div>
+                                <button id="btnAgregarArticulo" class="float-right btn btn-info btn-md" onclick="btnAgregarArticulo()">Agregar</button>
+                                <button id="btnActualizarArticulo" class="float-right btn btn-info btn-md" onclick="btnActualizarArticulo()">Actualizar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-bordered table-sm" id="tbArticulo">
+                        <thead>
+                            <tr class="table-info">
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Precio</th>
+                                <th>IVA</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            var btnActualizarArticulo = document.getElementById("btnActualizarArticulo");
+            btnActualizarArticulo.style.display = "none";
+        });
+    </script>
+</body>
+</html>
